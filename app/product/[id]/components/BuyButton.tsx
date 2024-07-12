@@ -40,58 +40,7 @@ export default function BuyButton({ data, keys }: BuyButtonProps) {
 		return result;
 	}
 
-	const buyFunction = async () => {
-		console.log(keys.publicKey);
-		console.log(keys.secretKey);
-
-		try {
-			setIsLoading(true);
-
-			console.log(data, "Product Detail");
-
-			const description = data.title;
-
-			// API Production payment link
-			// const apiUrl =
-			// 	"https://payment-gateway.lailaolab.com/v1/api/link/payment-link";
-
-			const apiUrl =
-				"https://payment-gateway.lailaolab.com:8000/v1/api/jubmuedev/payment-link";
-
-			const publicKey = removeFirstNChars(keys.publicKey, charToRemove, limit);
-			const secretKey = removeFirstNChars(keys.secretKey, charToRemove, limit);
-
-			// Create the Production Basic Auth header
-			// const authHeader = `Basic ${Buffer.from(`${publicKey}:${secretKey}`).toString("base64")}`;
-
-			const authHeader = `Basic ${Buffer.from(`${publicKey}`).toString("base64")}`;
-
-			const _result = await fetch(apiUrl, {
-				method: "POST",
-				headers: {
-					Authorization: authHeader,
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					// amount: data.price,
-					amount: 1,
-					description: description,
-				}),
-			});
-
-			const result = await _result.json();
-
-			if (_result.ok) {
-				router.push(result.redirectURL);
-			}
-
-			console.log(result, "Result");
-		} catch (error) {
-			alert(error);
-		} finally {
-			setIsLoading(false);
-		}
-	};
+	const buyFunction = async () => {};
 
 	return (
 		<Button onClick={buyFunction} disabled={isLoading}>
