@@ -56,7 +56,7 @@ export default function BuyButton({ data, keys }: BuyButtonProps) {
 			// 	"https://payment-gateway.lailaolab.com/v1/api/link/payment-link";
 
 			const apiUrl =
-				"https://payment-gateway.lailaolab.com:8000/v1/api/jubmuedev/payment-link";
+				"https://payment-gateway.lailaolab.com/v1/api/jubmuedev/payment-link";
 
 			const publicKey = removeFirstNChars(keys.publicKey, charToRemove, limit);
 			const secretKey = removeFirstNChars(keys.secretKey, charToRemove, limit);
