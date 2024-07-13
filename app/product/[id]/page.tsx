@@ -22,8 +22,8 @@ export default async function ProductDetail({
 	const { id } = params;
 
 	const product = await getProductDetail(id);
-	const publicKey = ""; // Add your public key
-	const secretKey = ""; // Add your secret key
+	const publicKey = process.env.PAYMENT_GATEWAY_PUBLIC_KEY?.toString(); // Add your public key
+	const secretKey = process.env.PAYMENT_GATEWAY_SECRET_KEY?.toString(); // Add your secret key
 
 	return (
 		<Card className="w-full mb-8 md:mb-0">

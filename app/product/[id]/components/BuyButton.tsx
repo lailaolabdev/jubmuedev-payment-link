@@ -19,7 +19,7 @@ export default function BuyButton({ data, keys }: BuyButtonProps) {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const charToRemove = "/";
-	const limit = 6;
+	// const limit = 6;
 
 	// Function
 	function removeFirstNChars(
@@ -41,8 +41,8 @@ export default function BuyButton({ data, keys }: BuyButtonProps) {
 	}
 
 	const buyFunction = async () => {
-		console.log(keys.publicKey);
-		console.log(keys.secretKey);
+		// console.log(keys.publicKey);
+		// console.log(keys.secretKey);
 
 		try {
 			setIsLoading(true);
@@ -58,8 +58,10 @@ export default function BuyButton({ data, keys }: BuyButtonProps) {
 			const apiUrl =
 				"https://payment-gateway.lailaolab.com/v1/api/jubmuedev/payment-link";
 
-			const publicKey = removeFirstNChars(keys.publicKey, charToRemove, limit);
-			const secretKey = removeFirstNChars(keys.secretKey, charToRemove, limit);
+			const publicKey = removeFirstNChars(keys.publicKey, charToRemove, 5);
+			// const secretKey = removeFirstNChars(keys.secretKey, charToRemove, 6);
+
+			console.log(publicKey, "Public Key");
 
 			// Create the Production Basic Auth header
 			// const authHeader = `Basic ${Buffer.from(`${publicKey}:${secretKey}`).toString("base64")}`;
